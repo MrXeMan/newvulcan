@@ -1,0 +1,59 @@
+[versions]
+agp = "8.3.2"
+gson = "2.11.0"
+jsoup = "1.10.3"
+khttp = "1.6.3"
+kotlin = "1.9.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+ksoup = "0.1.6-alpha1"
+ksoupHtml = "0.4.0"
+ksoupKtor2 = "<0.1.6-alpha1>"
+ksoupKtor2Version = "0.1.6-alpha1"
+ksoupOkio = "<version>"
+ksoupOkioVersion = "0.1.6-alpha1"
+ktorClientCore = "2.3.12"
+logbackClassic = "1.5.6"
+material = "1.12.0"
+constraintlayout = "2.1.4"
+lifecycleLivedataKtx = "2.8.3"
+lifecycleViewmodelKtx = "2.8.3"
+navigationFragmentKtx = "2.7.7"
+navigationUiKtx = "2.7.7"
+volley = "1.2.1"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+fleeksoft-ksoup-ktor2-v016alpha1 = { module = "com.fleeksoft.ksoup:ksoup-ktor2", version.ref = "ksoupKtor2Version" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+khttp = { module = "org.danilopianini:khttp", version.ref = "khttp" }
+ksoup = { module = "com.fleeksoft.ksoup:ksoup", version.ref = "ksoup" }
+ksoup-html = { module = "com.mohamedrejeb.ksoup:ksoup-html", version.ref = "ksoupHtml" }
+ksoup-korlibs = { module = "com.fleeksoft.ksoup:ksoup-korlibs", version.ref = "ksoupOkio" }
+ksoup-ktor2 = { module = "com.fleeksoft.ksoup:ksoup-ktor2", version.ref = "ksoupOkio" }
+ksoup-ktor2-v016alpha1 = { module = "com.fleeksoft.ksoup:ksoup-ktor2", version.ref = "ksoupKtor2" }
+ksoup-okio = { module = "com.fleeksoft.ksoup:ksoup-okio", version.ref = "ksoupOkio" }
+ksoup-okio-v016alpha1 = { module = "com.fleeksoft.ksoup:ksoup-okio", version.ref = "ksoupOkioVersion" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktorClientCore" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logbackClassic" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+volley = { module = "com.android.volley:volley", version.ref = "volley" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
