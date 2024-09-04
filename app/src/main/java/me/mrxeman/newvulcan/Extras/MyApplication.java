@@ -1,4 +1,4 @@
-package me.mrxeman.newvulcan;
+package me.mrxeman.newvulcan.Extras;
 
 import android.annotation.SuppressLint;
 import android.app.Application;

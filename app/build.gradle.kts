@@ -59,4 +59,8 @@ dependencies {
     implementation(libs.gson)
     // FOR HTML PARSING
     implementation(libs.jsoup)
+
+    //noinspection UseTomlInstead
+    implementation("org.slf4j:slf4j-android:1.7.36")
+    implementation("io.ktor:ktor-client-logging:2.3.12")
 }
