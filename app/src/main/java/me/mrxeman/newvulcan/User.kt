@@ -107,7 +107,7 @@ class User(val email: String, val password: String) {
         payload["captchaUser"] = ""
         payload["Alias"] = email
         payload["__RequestVerificationToken"] = verificationToken1!!
-        println("Payload: $payload")
+//        println("Payload: $payload")
 
         suspend fun getCookies(): List<Cookie> {
             val client = HttpClient(CIO) {

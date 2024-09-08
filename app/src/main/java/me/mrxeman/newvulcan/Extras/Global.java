@@ -2,9 +2,11 @@ package me.mrxeman.newvulcan.Extras;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Pair;
 
 import androidx.annotation.NonNull;
 
+import com.chaquo.python.PyObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,6 +19,7 @@ import java.util.Objects;
 
 import io.ktor.http.Cookie;
 import io.ktor.http.CookieEncoding;
+import io.ktor.util.Hash;
 
 public class Global {
 
@@ -65,6 +68,19 @@ public class Global {
         }
     }
 
+    public static void addPyCookies(@NonNull Map<PyObject, PyObject> newCookies) throws Exception {
+        if (newCookies.values().stream().anyMatch(Objects::isNull)) {
+            throw new Exception("Some cookies had null value inside! Invalid!");
+        }
+        HashMap<String, String> toReturn = new HashMap<>();
+        for (PyObject pyObject : newCookies.keySet()) {
+            PyObject pyObject1 = newCookies.get(pyObject);
+            assert pyObject1 != null;
+            toReturn.putIfAbsent(pyObject.toString(), pyObject1.toString());
+        }
+        addCookies(toReturn);
+    }
+
     public static void addCookies(List<Cookie> cookieList) {
         for (Cookie cookie : cookieList) {
             addCookies(cookie);
@@ -83,6 +99,15 @@ public class Global {
         }
         toReturn.deleteCharAt(0);
         return toReturn.toString();
+    }
+
+    @NonNull
+    public static HashMap<String, String> getCookiesList() {
+        HashMap<String, String> toReturn = new HashMap<>();
+        for (Cookie cookie : cookies) {
+            toReturn.putIfAbsent(cookie.getName(), cookie.getValue());
+        }
+        return toReturn;
     }
 
     public static void clearCookies() {

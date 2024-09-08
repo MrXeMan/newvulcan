@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.chaquo.python")
 }
 
 android {
@@ -15,6 +16,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters += listOf("arm64-v8a", "x86_64")
+        }
     }
 
     buildTypes {
@@ -63,4 +68,15 @@ dependencies {
     //noinspection UseTomlInstead
     implementation("org.slf4j:slf4j-android:1.7.36")
     implementation("io.ktor:ktor-client-logging:2.3.12")
+}
+
+chaquopy {
+    defaultConfig {
+        pip {
+            install("requests==2.32.2")
+            install("requests_toolbelt==1.0.0")
+        }
+    }
+    productFlavors { }
+    sourceSets { }
 }

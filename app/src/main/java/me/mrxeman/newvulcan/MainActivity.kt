@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.http.Cookie
 import me.mrxeman.newvulcan.Extras.Global
 import me.mrxeman.newvulcan.Extras.Global.loadCookies
@@ -17,6 +18,7 @@ import me.mrxeman.newvulcan.exceptions.LoggedNoFoundUserStringException
 import me.mrxeman.newvulcan.exceptions.NoCookiesException
 import me.mrxeman.newvulcan.exceptions.VerificationException
 import kotlin.concurrent.thread
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             lateinit var user: User
             try {
                 user = User.createUserFromString(sharedPreferences.getString("userString", null))
+                logIn(user)
             } catch (e: LoggedNoFoundUserStringException) {
                 sharedPreferences.edit {
                     putBoolean("loggedIn", false)
@@ -54,25 +57,37 @@ class MainActivity : AppCompatActivity() {
             val email: String = emailText.text.toString()
             val password: String = passText.text.toString()
             user = User(email, password)
-            thread {
-                try {
-                    println("Trying to log in...")
-                    user.logIn()
-                    if (user.loggedIn) {
-                        println("Logged in successfully!")
-                        val acc = Account(user)
-                        acc.getKey()
-                    } else {
-                        println("Failed to log in... the cause is unknown...")
-                    }
-                } catch (e: VerificationException) {
-                    println(e)
-                } catch (e: NoCookiesException) {
-                    println(e)
-                }
-            }
+            logIn(user)
         }
 
+    }
+
+    private fun logIn(user: User) {
+        thread {
+            try {
+                println("Trying to log in...")
+                user.logIn()
+                if (user.loggedIn) {
+                    println("Logged in successfully!")
+                    sharedPreferences.edit {
+                        putString("userString", User.createUserString(user))
+                        putBoolean("loggedIn", true)
+                    }
+                    val acc = Account(user)
+                    acc.getKey()
+                } else {
+                    println("Failed to log in... the cause is unknown...")
+                    throw HttpRequestTimeoutException("https://eduvulcan.pl", 1000L)
+                }
+            } catch (e: VerificationException) {
+                println(e)
+            } catch (e: NoCookiesException) {
+                println(e)
+            } catch (e: HttpRequestTimeoutException) {
+                println("What is your internet bro?")
+                println(e)
+            }
+        }
     }
 
     private fun addCookies() {
