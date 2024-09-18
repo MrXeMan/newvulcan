@@ -20,15 +20,18 @@ import java.util.Objects;
 import io.ktor.http.Cookie;
 import io.ktor.http.CookieEncoding;
 import io.ktor.util.Hash;
+import me.mrxeman.newvulcan.eduvulcan.ApiRequest;
 
 public class Global {
 
     private static final Boolean DEBUG = true;
+    public static final Boolean DEVELOPER_MODE = true;
 
     private static final SharedPreferences sharedPreferences = MyApplication.getContext().getSharedPreferences("APP", Context.MODE_PRIVATE);
 
     public static String stoppingCode = "////";
     private static ArrayList<Cookie> cookies = new ArrayList<>();
+    private static ApiRequest api = null;
 
     public static void saveCookies() {
         if (DEBUG) return;
@@ -115,6 +118,16 @@ public class Global {
         editor.putString("cookies", null);
         editor.apply();
         cookies.clear();
+    }
+
+    public static void setApi(ApiRequest api) {
+        if (Global.api == null) {
+            Global.api = api;
+        }
+    }
+
+    public static ApiRequest getApi() {
+        return api;
     }
 
 }

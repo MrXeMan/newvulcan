@@ -1,5 +1,6 @@
 package me.mrxeman.newvulcan.eduvulcan
 
+import me.mrxeman.newvulcan.Extras.Global
 import me.mrxeman.newvulcan.User
 
 class Account(user: User) {
@@ -13,6 +14,8 @@ class Account(user: User) {
     lateinit var profileToken: String
     lateinit var loginEndPointToken: String
     lateinit var powiatToken: String
+
+    var dziennikID: Int? = null
 
     init {
         email = user.email
@@ -52,6 +55,7 @@ class Account(user: User) {
         println("loginEndPoint: $loginEndPointToken")
         println("keyToken: $keyToken")
         println("powiatToken: $powiatToken")
+        Global.setApi(ApiRequest(this))
     }
 
 
