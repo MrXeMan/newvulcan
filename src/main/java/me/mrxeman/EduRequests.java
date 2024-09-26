@@ -5,20 +5,13 @@ import com.github.fracpete.requests4j.Requests;
 import com.github.fracpete.requests4j.event.RequestExecutionEvent;
 import com.github.fracpete.requests4j.event.RequestExecutionListener;
 import com.github.fracpete.requests4j.form.FormData;
-import com.github.fracpete.requests4j.request.URLBuilder;
 import com.github.fracpete.requests4j.response.BasicResponse;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import java.beans.Encoder;
 import java.net.CookieManager;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Map;
 
 import static me.mrxeman.Global.*;
 
@@ -26,7 +19,6 @@ import static me.mrxeman.Global.*;
 public class EduRequests {
 
     public static CookieManager cookieManager = new CookieManager();
-    public static final String user_agent = "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:65.0) Gecko/20100101 Firefox/65.0";
 
     public static String requestToken = null;
     public static String dziennikToken = null;
@@ -109,6 +101,7 @@ public class EduRequests {
         String url = doc.select("form[method=POST]").attr("action");
         String wresult = doc.select("input[name=wresult]").attr("value");
         powiatToken = redirects.get(0).split(".pl/")[1].split("/")[0];
+        EduAPI.setAPI(powiatToken);
         profileToken = redirects.get(0).split("=")[1].split("]")[0];
         FormData formData = new FormData()
                 .add("wa", "wsignin1.0")
@@ -134,11 +127,22 @@ public class EduRequests {
         keyToken = r3.rawResponse().request().url().toString().split("App/")[1].split("/")[0];
     }
 
-    public static String sendRequest() {
-
-
-
-        return "";
+    public static void sendRequest(@NotNull String command, String... args) throws Exception {
+        switch (command) {
+            case "main" -> {
+                EduAPI.mainRequest(cookieManager);
+            }
+            case "okres" -> {
+                EduAPI.okresyRequest(cookieManager, Integer.parseInt(args[0]));
+            }
+            case "oceny" -> {
+                if (args.length > 0) {
+                    EduAPI.ocenyRequest(cookieManager, args[0]);
+                } else {
+                    EduAPI.ocenyRequest(cookieManager);
+                }
+            }
+        }
     }
 
 }

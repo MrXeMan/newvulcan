@@ -1,7 +1,9 @@
 package me.mrxeman;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 import static me.mrxeman.EduRequests.*;
-import static me.mrxeman.Global.*;
 
 public class Main {
 
@@ -13,6 +15,19 @@ public class Main {
         mainLogInRequest();
         dziennikRequest();
         profileRequest();
+        System.out.println("Done requests! Doing customs...");
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Command: ");
+            String response = scanner.nextLine();
+            if (response.equalsIgnoreCase("quit")) break;
+            System.out.println("Arguments: ");
+            String[] arguments = scanner.nextLine().strip().split(";");
+            System.out.println(Arrays.toString(arguments));
+            sendRequest(response, arguments);
+        }
+
         System.out.println("Done!");
     }
 
