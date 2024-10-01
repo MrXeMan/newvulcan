@@ -16,7 +16,7 @@ class LoadingActivity : AppCompatActivity() {
 
         user.mainRequest()
 
-        //val intent = Intent(this, VulcanActivity::class.java)
-        //startActivity(intent)
+        val intent = Intent(this, VulcanActivity::class.java)
+        startActivity(intent)
     }
 }
