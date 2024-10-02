@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class FrekwencjaViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is oceny Fragment"
+        value = "This is frekwencja Fragment"
     }
     val text: LiveData<String> = _text
 }

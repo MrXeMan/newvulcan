@@ -3,6 +3,7 @@ package me.mrxeman.vulcan.activities
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import me.mrxeman.vulcan.R
@@ -32,8 +33,13 @@ class VulcanActivity : AppCompatActivity() {
 //            )
 //        )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
-
+        println(navController.graph)
         navView.menu.clear()
+        println(fragments)
+        println(R.string.title_dashboard)
+        println(R.string.title_oceny)
+        println(R.string.title_lekcje)
+        println(R.string.title_frekwencja)
         fragments.forEach {
             val item = navView.menu.add(it.key)
             if (it.value.first != null) item.setIcon(it.value.first!!)
@@ -51,7 +57,7 @@ class VulcanActivity : AppCompatActivity() {
     private fun load() {
         fragments[R.string.title_dashboard] = R.drawable.ic_dashboard_black_24dp to R.id.navigation_dashboard
         fragments[R.string.title_oceny] = R.drawable.baseline_looks_6_24 to R.id.navigation_oceny
-        fragments[R.string.title_lekcje] = R.drawable.ic_home_black_24dp to R.id.navigation_lekcje
-        fragments[R.string.title_frekwencja] = R.drawable.ic_home_black_24dp to R.id.navigation_frekwencja
+        fragments[R.string.title_lekcje] = R.drawable.baseline_view_timeline_24 to R.id.navigation_lekcje
+        fragments[R.string.title_frekwencja] = R.drawable.outline_task_alt_24 to R.id.navigation_frekwencja
     }
 }

@@ -11,6 +11,14 @@
         android:icon="@drawable/baseline_looks_6_24"
         android:title="@string/title_oceny" />
 
+    <item
+        android:id="@+id/navigation_frekwencja"
+        android:icon="@drawable/baseline_view_timeline_24"
+        android:title="@string/title_frekwencja" />
 
+    <item
+        android:id="@+id/navigation_lekcje"
+        android:icon="@drawable/outline_task_alt_24"
+        android:title="@string/title_lekcje" />
 
 </menu>

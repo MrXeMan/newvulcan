@@ -14,6 +14,10 @@ class LoadingActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_loading)
 
+        if (user == null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
         user.mainRequest()
 
         val intent = Intent(this, VulcanActivity::class.java)
