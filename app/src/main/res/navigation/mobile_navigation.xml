@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_oceny" />
 
     <fragment
+        android:id="@+id/navigation_lekcje"
+        android:name="me.mrxeman.vulcan.activities.ui.lekcje.LekcjeFragment"
+        android:label="@string/title_lekcje"
+        tools:layout="@layout/fragment_lekcje" />
+
+    <fragment
         android:id="@+id/navigation_frekwencja"
         android:name="me.mrxeman.vulcan.activities.ui.frekwencja.FrekwencjaFragment"
         android:label="@string/title_frekwencja"

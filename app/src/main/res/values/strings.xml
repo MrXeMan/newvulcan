@@ -15,5 +15,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_oceny">Oceny</string>
+    <string name="title_lekcje">Lekcje</string>
     <string name="title_frekwencja">Frekwencja</string>
 </resources>
