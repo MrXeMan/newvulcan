@@ -51,5 +51,6 @@ class VulcanActivity : AppCompatActivity() {
     private fun load() {
         fragments[R.string.title_dashboard] = R.drawable.ic_dashboard_black_24dp to R.id.navigation_dashboard
         fragments[R.string.title_oceny] = R.drawable.baseline_looks_6_24 to R.id.navigation_oceny
+        fragments[R.string.title_frekwencja] = R.drawable.ic_home_black_24dp to R.id.navigation_frekwencja
     }
 }

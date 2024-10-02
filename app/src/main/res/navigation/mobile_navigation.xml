@@ -16,4 +16,10 @@
         android:name="me.mrxeman.vulcan.activities.ui.oceny.OcenyFragment"
         android:label="@string/title_oceny"
         tools:layout="@layout/fragment_oceny" />
+
+    <fragment
+        android:id="@+id/navigation_frekwencja"
+        android:name="me.mrxeman.vulcan.activities.ui.frekwencja.FrekwencjaFragment"
+        android:label="@string/title_frekwencja"
+        tools:layout="@layout/fragment_frekwencja" />
 </navigation>
