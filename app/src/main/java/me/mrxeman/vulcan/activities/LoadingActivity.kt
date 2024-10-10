@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import me.mrxeman.vulcan.R
 import me.mrxeman.vulcan.utils.Global.*
+import kotlin.concurrent.thread
 
 class LoadingActivity : AppCompatActivity() {
 
@@ -14,9 +15,15 @@ class LoadingActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_loading)
 
+        thread {
+            mainRequest()
+        }
+    }
+
+    private fun mainRequest() = thread(isDaemon = true) {
         user.mainRequest()
 
-        //val intent = Intent(this, VulcanActivity::class.java)
-        //startActivity(intent)
+        val intent = Intent(this, VulcanActivity::class.java)
+        startActivity(intent)
     }
 }
