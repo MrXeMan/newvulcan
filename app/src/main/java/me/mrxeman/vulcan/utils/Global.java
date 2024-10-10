@@ -36,6 +36,8 @@ public class Global {
      public static final URL vulcan;
      private static boolean running = false;
 
+     public static String temporary = null;
+
     static {
         try {
             vulcan = new URL("https://eduvulcan.pl");

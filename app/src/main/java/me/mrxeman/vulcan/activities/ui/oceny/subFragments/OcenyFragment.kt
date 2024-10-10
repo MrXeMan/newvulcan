@@ -1,4 +1,4 @@
-package me.mrxeman.vulcan.activities.ui.oceny
+package me.mrxeman.vulcan.activities.ui.oceny.subFragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.oceny.utils.Oceny
+import me.mrxeman.vulcan.activities.ui.oceny.subFragments.placeholder.PlaceholderContent
 
 /**
  * A fragment representing a list of Items.
@@ -26,11 +26,9 @@ class OcenyFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_oceny_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_ocena_list, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -39,7 +37,7 @@ class OcenyFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyOcenyRecyclerViewAdapter(Oceny.przedmioty)
+                adapter = MyOcenyRecyclerViewAdapter(PlaceholderContent.ITEMS)
             }
         }
         return view
@@ -53,10 +51,10 @@ class OcenyFragment : Fragment() {
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
-            OcenyFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
+                OcenyFragment().apply {
+                    arguments = Bundle().apply {
+                        putInt(ARG_COLUMN_COUNT, columnCount)
+                    }
                 }
-            }
     }
 }
