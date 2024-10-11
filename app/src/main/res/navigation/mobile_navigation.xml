@@ -15,5 +15,15 @@
         android:id="@+id/nav_oceny"
         android:name="me.mrxeman.vulcan.activities.ui.oceny.OcenyFragment"
         android:label="@string/menu_oceny"
-        tools:layout="@layout/fragment_oceny" />
+        tools:layout="@layout/fragment_oceny" >
+        <action
+            android:id="@+id/action_nav_oceny_to_nav_ocena"
+            app:destination="@id/nav_ocena" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_ocena"
+        android:name="me.mrxeman.vulcan.activities.ui.oceny.subFragments.OcenyFragment"
+        android:label="Ocena"
+        tools:layout="@layout/fragment_ocena" />
 </navigation>

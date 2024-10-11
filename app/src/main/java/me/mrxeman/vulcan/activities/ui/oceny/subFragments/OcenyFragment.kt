@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.oceny.subFragments.placeholder.PlaceholderContent
+import me.mrxeman.vulcan.activities.ui.oceny.utils.Oceny
 
 /**
  * A fragment representing a list of Items.
@@ -37,7 +37,7 @@ class OcenyFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyOcenyRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                adapter = MyOcenyRecyclerViewAdapter(Oceny.selectedPrzedmiot!!.oceny)
             }
         }
         return view

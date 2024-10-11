@@ -5,13 +5,16 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import me.mrxeman.vulcan.utils.Global
+import okhttp3.internal.notify
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
 object Oceny {
 
-    val przedmioty: MutableList<Przedmiot> = mutableListOf()
+    var przedmioty: MutableList<Przedmiot> = mutableListOf()
+
+    var selectedPrzedmiot: Przedmiot? = null
 
     val przedmiotyMap: MutableMap<String, Przedmiot> = mutableMapOf()
 
