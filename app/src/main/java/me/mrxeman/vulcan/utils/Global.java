@@ -2,6 +2,7 @@ package me.mrxeman.vulcan.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 
 import androidx.annotation.Nullable;
 
@@ -14,6 +15,8 @@ import org.jetbrains.annotations.NotNull;
 import java.net.CookieManager;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -38,12 +41,19 @@ public class Global {
 
      public static String temporary = null;
 
+     private static final HashMap<Integer, Integer> ocenyWagaColors = new HashMap<>();
+
+
+
     static {
         try {
             vulcan = new URL("https://eduvulcan.pl");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+        ocenyWagaColors.put(1, Color.rgb(0, 255, 0));
+        ocenyWagaColors.put(2, Color.rgb(255, 200, 48));
+        ocenyWagaColors.put(3, Color.rgb(255, 0, 0));
     }
 
     public static void setPreferences(SharedPreferences pref) {
@@ -111,4 +121,9 @@ public class Global {
                 }
         ).start();
     }
+
+    public static Integer getColor(int importance) {
+        return ocenyWagaColors.getOrDefault(importance, null);
+    }
+
 }
