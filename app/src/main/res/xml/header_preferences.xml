@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        app:fragment="me.mrxeman.vulcan.activities.ui.settings.SettingsActivity$MessagesFragment"
+        app:icon="@drawable/messages"
+        app:key="messages_header"
+        app:title="@string/messages_header" />
+
+    <Preference
+        app:fragment="me.mrxeman.vulcan.activities.ui.settings.SettingsActivity$SyncFragment"
+        app:icon="@drawable/sync"
+        app:key="sync_header"
+        app:title="@string/sync_header" />
+
+    <Preference
+        app:fragment="me.mrxeman.vulcan.activities.ui.settings.SettingsActivity$OcenyFragment"
+        app:icon="@drawable/baseline_looks_6_24"
+        app:key="oceny_header"
+        app:title="Oceny" />
+
+</PreferenceScreen>

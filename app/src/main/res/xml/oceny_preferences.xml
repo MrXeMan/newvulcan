@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Importance Colors"
+        android:key="importance_colors_category">
+
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Importance of 1 color:"
+            android:key="importance1color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Importance of 2 color:"
+            android:key="importance2color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Importance of 3 color:"
+            android:key="importance3color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+
+    </PreferenceCategory>
+
+
+</androidx.preference.PreferenceScreen>

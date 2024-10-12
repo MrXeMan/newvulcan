@@ -37,13 +37,23 @@
         tools:ignore="Deprecated" />
 
     <Button
-        android:id="@+id/loadButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/loadGradesButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="LOAD"
+        android:text="Load grades"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/jsontext" />
+
+    <Button
+        android:id="@+id/loadFrekwencjaButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Load frekwencja"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loadGradesButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

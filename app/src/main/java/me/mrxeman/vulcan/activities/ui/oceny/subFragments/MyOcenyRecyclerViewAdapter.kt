@@ -1,20 +1,24 @@
 package me.mrxeman.vulcan.activities.ui.oceny.subFragments
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.preference.PreferenceManager
 
 import me.mrxeman.vulcan.activities.ui.oceny.utils.Oceny
 import me.mrxeman.vulcan.databinding.FragmentOcenaBinding
 import me.mrxeman.vulcan.utils.Global
+import me.mrxeman.vulcan.utils.MyApplication
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeFormatterBuilder
+import java.util.Date
 import java.util.Locale.Category
 
 /**
@@ -27,7 +31,7 @@ class MyOcenyRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-    return ViewHolder(FragmentOcenaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(FragmentOcenaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     }
 
@@ -35,13 +39,13 @@ class MyOcenyRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = oceny[position]
         holder.ocena.text = item.grade
-        holder.ocenaData.text = SimpleDateFormat("dd.mm.yyyy").format(item.data)
+        holder.ocenaData.text = item.data?.let { Date(it) }
+            ?.let { SimpleDateFormat("dd.mm.yyyy").format(it) }
         holder.ocenaName.text = item.columnName
         holder.ocenaTyp.text = item.categoryName
         holder.ocenaWaga.text = "Waga: ${item.importance}"
-        if (Global.getColor(item.importance) != null) {
-            holder.ocena.setTextColor(Global.getColor(item.importance))
-        }
+        holder.ocena.setTextColor(PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).getInt("importance${item.importance}color",
+            Global.getDefaultColor("importance${item.importance}color")))
     }
 
     override fun getItemCount(): Int = Oceny.selectedPrzedmiot!!.oceny.size

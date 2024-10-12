@@ -23,8 +23,8 @@ class OcenyFragment : Fragment() {
 
     private var columnCount = 1
 
-    lateinit var recyclerView: RecyclerView
-    lateinit var adapter: MyOcenyRecyclerViewAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: MyOcenyRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +68,6 @@ class OcenyFragment : Fragment() {
         return view
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     private fun filterList(text: String?) {
         val filteredList: MutableList<Oceny.Przedmiot> = mutableListOf()
         Oceny.przedmioty.forEach {
@@ -85,6 +84,12 @@ class OcenyFragment : Fragment() {
         } else {
             adapter.setFilteredList(filteredList)
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        adapter.notifyDataSetChanged()
+        super.onResume()
     }
 
     companion object {

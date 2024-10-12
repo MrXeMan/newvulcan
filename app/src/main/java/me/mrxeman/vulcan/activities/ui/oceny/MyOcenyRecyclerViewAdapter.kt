@@ -3,24 +3,16 @@ package me.mrxeman.vulcan.activities.ui.oceny
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.view.menu.ActionMenuItem
-import androidx.core.view.ActionProvider
-import androidx.fragment.app.FragmentController
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.preference.PreferenceManager
 import me.mrxeman.vulcan.R
 
 import me.mrxeman.vulcan.activities.ui.oceny.utils.Oceny
-import me.mrxeman.vulcan.databinding.FragmentOcenaBinding
 import me.mrxeman.vulcan.databinding.FragmentOcenyBinding
+import me.mrxeman.vulcan.utils.Global
 import me.mrxeman.vulcan.utils.MyApplication
 
 /**
@@ -45,6 +37,17 @@ class MyOcenyRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val przedmiot = values[position]
         holder.text.text = przedmiot.name
+        if (przedmiot.oceny.isEmpty()) {
+            holder.newest.text = ""
+            holder.newestText.text = ""
+        } else {
+            val grade = przedmiot.getNewestGrade()
+            holder.newestText.text = "Newest: "
+            holder.newest.text = grade!!.grade
+            holder.newest.setTextColor(
+                PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).getInt("importance${grade.importance}color",
+                Global.getDefaultColor("importance${grade.importance}color")))
+        }
 
         holder.next.setOnClickListener {
             Oceny.selectedPrzedmiot = przedmiot
@@ -52,6 +55,8 @@ class MyOcenyRecyclerViewAdapter(
 //            Toast.makeText(MyApplication.getContext(), "Selected ${przedmiot.name}", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 
     @SuppressLint("NotifyDataSetChanged")
     fun setFilteredList(filteredList: MutableList<Oceny.Przedmiot>?) {
@@ -64,6 +69,8 @@ class MyOcenyRecyclerViewAdapter(
     inner class ViewHolder(binding: FragmentOcenyBinding) : RecyclerView.ViewHolder(binding.root) {
         val text: TextView = binding.przedmiotText
         val next: ImageButton = binding.przedmiotButton
+        val newest: TextView = binding.newestGrade
+        val newestText: TextView = binding.newestText
 
         override fun toString(): String {
             return super.toString() + " '" + text.text + "'"
