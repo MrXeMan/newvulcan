@@ -17,6 +17,13 @@
         android:theme="@style/Theme.Vulcan"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ui.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".activities.ui.settings.MainSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.VulcanActivity"
             android:exported="false"
             android:label="@string/title_activity_vulcan"

@@ -3,6 +3,13 @@ package me.mrxeman.vulcan.utils;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+
 
 public class MyApplication extends Application {
 

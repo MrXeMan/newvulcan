@@ -1,7 +1,9 @@
 package me.mrxeman.vulcan.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -12,7 +14,9 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import me.mrxeman.vulcan.R
+import me.mrxeman.vulcan.activities.ui.settings.SettingsActivity
 import me.mrxeman.vulcan.databinding.ActivityVulcanBinding
+import me.mrxeman.vulcan.utils.MyApplication
 
 class VulcanActivity : AppCompatActivity() {
 
@@ -55,5 +59,12 @@ class VulcanActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_vulcan)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_settings) {
+            startActivity(Intent(MyApplication.getContext(), SettingsActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
