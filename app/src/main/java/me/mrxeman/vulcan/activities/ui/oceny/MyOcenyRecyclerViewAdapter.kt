@@ -46,7 +46,7 @@ class MyOcenyRecyclerViewAdapter(
             holder.newest.text = grade!!.grade
             holder.newest.setTextColor(
                 PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).getInt("importance${grade.importance}color",
-                Global.getDefaultColor("importance${grade.importance}color")))
+                Global.Importance.getDefaultColor("importance${grade.importance}color")))
         }
 
         holder.next.setOnClickListener {

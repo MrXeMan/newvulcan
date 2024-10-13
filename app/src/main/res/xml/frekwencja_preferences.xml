@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="Frekwencja Colors"
+        android:key="frekwencja_colors_category">
+
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Attendence color: "
+            android:key="attend_color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Absence color: "
+            android:key="absent_color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Excused absence color: "
+            android:key="absent_ex_color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="School caused absence color: "
+            android:key="absent_sch_color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Tardiness color: "
+            android:key="tardiness_color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Excused tardiness color: "
+            android:key="tardiness_ex_color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+        <com.rarepebble.colorpicker.ColorPreference
+            android:title="Leave color: "
+            android:key="leave_color"
+            app:colorpicker_showAlpha="false"
+            app:colorpicker_showHex="false"
+            />
+
+
+
+
+
+
+    </PreferenceCategory>
+
+
+
+</androidx.preference.PreferenceScreen>

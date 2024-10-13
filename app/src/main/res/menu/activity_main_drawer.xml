@@ -12,6 +12,10 @@
             android:id="@+id/nav_oceny"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_oceny" />
+        <item
+            android:id="@+id/nav_frekwencja"
+            android:icon="@drawable/round_check_circle_outline_24"
+            android:title="@string/menu_frekwencja" />
 
     </group>
 </menu>

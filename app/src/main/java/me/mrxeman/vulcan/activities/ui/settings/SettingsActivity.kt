@@ -93,9 +93,9 @@ class SettingsActivity : AppCompatActivity(),
     class OcenyFragment: PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.oceny_preferences, rootKey)
-            Global.getImportanceKeys().forEach {
+            Global.Importance.getKeys().forEach {
                 val pref = findPreference<ColorPreference>(it)
-                pref?.setDefaultValue(Global.getDefaultColor(pref.key))
+                pref!!.setDefaultValue(Global.Importance.getDefaultColor(pref.key))
             }
         }
 
@@ -107,4 +107,24 @@ class SettingsActivity : AppCompatActivity(),
             }
         }
     }
+
+    class FrekwencjaFragment: PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.frekwencja_preferences, rootKey)
+            Global.Attendance.getKeys().forEach {
+                val pref = findPreference<ColorPreference>(it)
+                pref!!.setDefaultValue(Global.Attendance.getDefaultColor(it))
+            }
+        }
+
+        override fun onDisplayPreferenceDialog(preference: Preference) {
+            if (preference is ColorPreference) {
+                preference.showDialog(this, 0)
+            } else {
+                super.onDisplayPreferenceDialog(preference)
+            }
+        }
+
+    }
+
 }

@@ -19,4 +19,10 @@
         app:key="oceny_header"
         app:title="Oceny" />
 
+    <Preference
+        app:fragment="me.mrxeman.vulcan.activities.ui.settings.SettingsActivity$FrekwencjaFragment"
+        app:icon="@drawable/round_check_circle_outline_24"
+        app:key="frekwencja_header"
+        app:title="Frekwencja" />
+
 </PreferenceScreen>

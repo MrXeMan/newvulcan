@@ -9,7 +9,14 @@
         android:id="@+id/nav_home"
         android:name="me.mrxeman.vulcan.activities.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_oceny"
+            app:destination="@id/nav_oceny" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_frekwencja"
+            app:destination="@id/nav_frekwencja" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_oceny"
@@ -26,4 +33,10 @@
         android:name="me.mrxeman.vulcan.activities.ui.oceny.subFragments.OcenyFragment"
         android:label="Ocena"
         tools:layout="@layout/fragment_ocena" />
+
+    <fragment
+        android:id="@+id/nav_frekwencja"
+        android:name="me.mrxeman.vulcan.activities.ui.frekwencja.FrekwencjaFragment"
+        android:label="Frekwencja"
+        tools:layout="@layout/fragment_frekwencja" />
 </navigation>
