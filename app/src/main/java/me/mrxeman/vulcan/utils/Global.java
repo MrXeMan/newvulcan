@@ -1,15 +1,12 @@
 package me.mrxeman.vulcan.utils;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.preference.PreferenceManager;
 
-import com.github.fracpete.requests4j.response.BasicResponse;
-import com.github.fracpete.requests4j.response.JsonResponse;
 import com.github.fracpete.requests4j.response.Response;
 
 import org.jetbrains.annotations.Contract;
@@ -26,7 +23,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.logging.Logger;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -35,6 +31,7 @@ public class Global {
 
      private static final CookieManager cookieManager = new CookieManager();
      private static SharedPreferences preferences = null;
+     private static SharedPreferences defPref = null;
 
      public static User user = null;
      public static String email = null;
@@ -49,11 +46,14 @@ public class Global {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
+        Importance.load();
+        Attendance.load();
     }
 
     public static void setPreferences(SharedPreferences pref) {
         if (preferences == null) {
             preferences = pref;
+            defPref = PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext());
         }
     }
 
@@ -117,30 +117,153 @@ public class Global {
         ).start();
     }
 
-    @NonNull
-    public static Integer getDefaultColor(@NonNull String key) {
-        switch(key) {
-            case "importance1color": {
-                return Color.rgb(0, 255, 0);
-            }
-            case "importance2color": {
-                return Color.rgb(255, 200, 48);
-            }
-            case "importance3color": {
-                return Color.rgb(255, 0, 0);
-            }
-            default: {
+    public static SharedPreferences getDefaultPreferences() {
+        return defPref;
+    }
+
+    public static class Importance {
+
+        static final HashMap<String, Integer> imp = new HashMap<>();
+
+        public static void load() {
+            imp.put("importance1color", Color.rgb(0 ,255, 0));
+            imp.put("importance2color", Color.rgb(255, 200, 48));
+            imp.put("importance3color", Color.rgb(255, 0, 0));
+        }
+
+        @NonNull
+        public static Integer getDefaultColor(@NonNull String key) {
+            if (imp.containsKey(key)) {
+                return Objects.requireNonNull(imp.get(key));
+            } else {
                 return Color.rgb(0, 0, 0);
             }
         }
+
+        @NonNull
+        public static ArrayList<String> getKeys() {
+            return new ArrayList<>(imp.keySet());
+        }
+
     }
 
-    @NonNull
-    public static ArrayList<String> getImportanceKeys() {
-        ArrayList<String> toReturn = new ArrayList<>();
-        toReturn.add("importance1color");
-        toReturn.add("importance2color");
-        toReturn.add("importance3color");
-        return toReturn;
+    public static class Attendance {
+
+        static final HashMap<String, Integer> att = new HashMap<>();
+        static final HashMap<String, String> att_text = new HashMap<>();
+
+        public static void load() {
+            att.put("attend_color", Color.rgb(0, 255, 0));
+            att.put("absent_color", Color.rgb(120, 0, 0));
+            att.put("absent_ex_color", Color.rgb(0, 255, 247));
+            att.put("absent_sch_color", Color.rgb(255, 0, 0));
+            att.put("tardiness_color", Color.rgb(252, 151, 151));
+            att.put("tardiness_ex_color", Color.rgb(0, 42, 255));
+            att.put("leave_color", Color.rgb(120, 3, 255));
+
+            att_text.put("attend_text", "Obecnosc");
+            att_text.put("absent_text", "Nieobecnosc");
+            att_text.put("absent_ex_text", "Nieobecnosc usprawiedliwiona");
+            att_text.put("absent_sch_text", "Nieobecnosc z przyczyn szkolnych");
+            att_text.put("tardiness_text", "Spoznienie");
+            att_text.put("tardiness_ex_text", "Spoznienie usprawiedliwione");
+            att_text.put("leave_text", "Zwolnienie");
+        }
+
+        @Nullable
+        @Contract(pure = true)
+        public static String convert(int key) {
+            switch (key) {
+                case 1: {
+                    return "attend_color";
+                }
+                case 2: {
+                    return "absent_color";
+                }
+                case 3: {
+                    return "absent_ex_color";
+                }
+                case 4: {
+                    return "tardiness_color";
+                }
+                case 5: {
+                    return "tardiness_ex_color";
+                }
+                case 6: {
+                    return "absent_sch_color";
+                }
+                case 7: {
+                    return "leave_color";
+                }
+            }
+            return null;
+        }
+
+        @Nullable
+        @Contract(pure = true)
+        public static String convertText(int key) {
+            switch (key) {
+                case 1: {
+                    return "attend_text";
+                }
+                case 2: {
+                    return "absent_text";
+                }
+                case 3: {
+                    return "absent_ex_text";
+                }
+                case 4: {
+                    return "tardiness_text";
+                }
+                case 5: {
+                    return "tardiness_ex_text";
+                }
+                case 6: {
+                    return "absent_sch_text";
+                }
+                case 7: {
+                    return "leave_text";
+                }
+            }
+            return null;
+        }
+
+        @NonNull
+        public static ArrayList<String> getKeys() {
+            return new ArrayList<>(att.keySet());
+        }
+
+        @NonNull
+        public static Integer getDefaultColor(@NonNull String key) {
+            if (att.containsKey(key)) {
+                return Objects.requireNonNull(att.get(key));
+            } else {
+                return Color.rgb(0, 0, 0);
+            }
+        }
+
+        @NonNull
+        public static String getDefaultText(@NonNull String key) {
+            if (att_text.containsKey(key)) {
+                return Objects.requireNonNull(att_text.get(key));
+            } else {
+                return "";
+            }
+        }
+
+        @NonNull
+        public static Integer getDefaultColor(int keyInt) {
+            String key = convert(keyInt);
+            if (key == null) throw new RuntimeException("THERE IS SOMETHING WRONG WITH CONVERT: " +  keyInt);
+            return getDefaultColor(key);
+        }
+
+        @NonNull
+        public static String getDefaultText(int keyInt) {
+            String key = convertText(keyInt);
+            if (key == null) throw new RuntimeException("THERE IS SOMETHING WRONG WITH CONVERT: " +  keyInt);
+            return getDefaultText(key);
+        }
+
     }
 }

@@ -45,7 +45,7 @@ class MyOcenyRecyclerViewAdapter(
         holder.ocenaTyp.text = item.categoryName
         holder.ocenaWaga.text = "Waga: ${item.importance}"
         holder.ocena.setTextColor(PreferenceManager.getDefaultSharedPreferences(MyApplication.getContext()).getInt("importance${item.importance}color",
-            Global.getDefaultColor("importance${item.importance}color")))
+            Global.Importance.getDefaultColor("importance${item.importance}color")))
     }
 
     override fun getItemCount(): Int = Oceny.selectedPrzedmiot!!.oceny.size
