@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_frekwencja"
             app:destination="@id/nav_frekwencja" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_lekcje"
+            app:destination="@id/nav_lekcje" />
     </fragment>
 
     <fragment
@@ -39,4 +42,10 @@
         android:name="me.mrxeman.vulcan.activities.ui.frekwencja.FrekwencjaFragment"
         android:label="Frekwencja"
         tools:layout="@layout/fragment_frekwencja" />
+
+    <fragment
+        android:id="@+id/nav_lekcje"
+        android:name="me.mrxeman.vulcan.activities.ui.lekcje.LekcjeFragment"
+        android:label="Lekcje"
+        tools:layout="@layout/fragment_lekcje" />
 </navigation>

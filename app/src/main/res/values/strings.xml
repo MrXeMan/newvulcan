@@ -118,4 +118,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="menu_frekwencja">Frekwencja</string>
+    <string name="menu_lekcje">Lekcje</string>
 </resources>
