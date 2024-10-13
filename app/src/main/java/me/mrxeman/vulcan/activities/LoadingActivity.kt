@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import me.mrxeman.vulcan.R
 import me.mrxeman.vulcan.utils.Global.*
+import java.lang.NullPointerException
 import kotlin.concurrent.thread
 
 class LoadingActivity : AppCompatActivity() {
@@ -21,7 +22,11 @@ class LoadingActivity : AppCompatActivity() {
     }
 
     private fun mainRequest() = thread(isDaemon = true) {
-        user.mainRequest()
+        try {
+            user.mainRequest()
+        } catch (_: NullPointerException) {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         val intent = Intent(this, VulcanActivity::class.java)
         startActivity(intent)
