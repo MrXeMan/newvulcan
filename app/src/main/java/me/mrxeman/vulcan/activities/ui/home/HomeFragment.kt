@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import me.mrxeman.vulcan.activities.ui.frekwencja.placeholder.Obecnosc
-import me.mrxeman.vulcan.activities.ui.lekcje.placeholder.Lessons
+import me.mrxeman.vulcan.activities.ui.lekcje.utils.Lessons
 import me.mrxeman.vulcan.activities.ui.oceny.utils.Oceny
 import me.mrxeman.vulcan.databinding.FragmentHomeBinding
 import me.mrxeman.vulcan.utils.MyApplication

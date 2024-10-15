@@ -1,6 +1,5 @@
-package me.mrxeman.vulcan.activities.ui.lekcje.placeholder
+package me.mrxeman.vulcan.activities.ui.lekcje.utils
 
-import androidx.core.content.contentValuesOf
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
 import me.mrxeman.vulcan.utils.Extensions.asIntOrNull
@@ -43,7 +42,7 @@ object Lessons {
                     temp.get("godzinaDo").asLocalTimeOrNull,
                     temp.get("zajecia")?.asStringOrNull,
                     temp.get("sala")?.asStringOrNull,
-                    temp.get("nauczyciel")?.asStringOrNull,
+                    temp.get("prowadzacy")?.asStringOrNull,
                     temp.get("informacjeNieobecnosc")?.asStringOrNull,
                     null
                 )

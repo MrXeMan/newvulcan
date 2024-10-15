@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import java.net.CookieManager;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -29,25 +30,28 @@ import kotlin.jvm.functions.Function0;
 
 public class Global {
 
-     private static final CookieManager cookieManager = new CookieManager();
-     private static SharedPreferences preferences = null;
-     private static SharedPreferences defPref = null;
+    private static final CookieManager cookieManager = new CookieManager();
+    private static SharedPreferences preferences = null;
+    private static SharedPreferences defPref = null;
 
-     public static User user = null;
-     public static String email = null;
-     public static String password = null;
+    public static User user = null;
+    public static String email = null;
+    public static String password = null;
 
-     public static final URL vulcan;
-     private static boolean running = false;
+    public static final URL vulcan;
+    private static boolean running = false;
+
+    public static final DateTimeFormatter hourFormat = DateTimeFormatter.ofPattern("HH:mm");
+    public static final DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     static {
-        try {
-            vulcan = new URL("https://eduvulcan.pl");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-        Importance.load();
-        Attendance.load();
+       try {
+           vulcan = new URL("https://eduvulcan.pl");
+       } catch (MalformedURLException e) {
+           throw new RuntimeException(e);
+       }
+       Importance.load();
+       Attendance.load();
     }
 
     public static void setPreferences(SharedPreferences pref) {

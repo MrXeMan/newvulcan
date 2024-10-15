@@ -5,14 +5,16 @@ import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import me.mrxeman.vulcan.activities.ui.lekcje.placeholder.Lessons
-
+import androidx.navigation.findNavController
+import me.mrxeman.vulcan.R
+import me.mrxeman.vulcan.activities.ui.lekcje.subFragments.LekcjaFragment
+import me.mrxeman.vulcan.activities.ui.lekcje.utils.Lessons
 import me.mrxeman.vulcan.databinding.FragmentLekcjeBinding
+
 import me.mrxeman.vulcan.utils.MyApplication
 
 /**
@@ -39,11 +41,12 @@ class MyLekcjeRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values?.get(position)!!
         holder.button.setOnClickListener {
-            Toast.makeText(MyApplication.getContext(), "Selected ${item.godzinaOd} - ${item.godzinaDo}!", Toast.LENGTH_SHORT).show()
+            LekcjaFragment.lekcja = item
+            it.findNavController().navigate(R.id.action_nav_lekcje_to_nav_lekcja)
         }
         holder.przedmiot.text = item.przedmiot
         holder.godziny.text = "${item.godzinaOd} - ${item.godzinaDo}"
-        if (item.zmiany?.kategoria == 5) {
+        if (item.zmiany?.kategoria == 5 || item.zmiany?.kategoria == 4) {
             holder.przedmiot.setTextColor(Color.rgb(255, 0, 0))
             holder.image.setColorFilter(Color.rgb(255, 0, 0))
             holder.godziny.setTextColor(Color.rgb(255, 0, 0))
@@ -53,6 +56,11 @@ class MyLekcjeRecyclerViewAdapter(
             holder.image.setColorFilter(Color.rgb(0, 255, 0))
             holder.godziny.setTextColor(Color.rgb(0, 255, 0))
             holder.more.setTextColor(Color.rgb(0, 255, 0))
+        } else if (item.zmiany?.kategoria == 7) {
+            holder.przedmiot.setTextColor(Color.rgb(0, 0, 255))
+            holder.image.setColorFilter(Color.rgb(0, 0, 255))
+            holder.godziny.setTextColor(Color.rgb(0, 0, 255))
+            holder.more.setTextColor(Color.rgb(0, 0, 255))
         }
     }
 

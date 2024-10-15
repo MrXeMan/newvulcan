@@ -9,24 +9,13 @@
               <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\dajno\.android\avd\Pixel_8_API_31.avd" />
+                  <type value="SERIAL_NUMBER" />
+                  <value value="RZCTA0R76RE" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\dajno\.android\avd\Pixel_8_API_31.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-10-13T19:50:01.727885100Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-10-15T21:29:51.253495800Z" />
         </State>
       </entry>
     </value>
