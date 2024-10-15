@@ -12,7 +12,9 @@ object Extensions {
     val JsonElement.asStringOrNull: String?
         get() {
             return try {
-                asString
+                asString.ifEmpty {
+                    null
+                }
             } catch (_: UnsupportedOperationException) {
                 null
             }
@@ -53,5 +55,21 @@ object Extensions {
                 null
             }
         }
+
+    fun LocalTime?.format(): String? {
+        return this?.format(Global.hourFormat)
+    }
+
+    fun LocalDate?.format(): String? {
+        return this?.format(Global.dayFormat)
+    }
+
+    fun String?.ifNull(): String {
+        return this ?: "Brak"
+    }
+
+    fun LocalDate?.ifNull(): String {
+        return this?.toString() ?: "Brak"
+    }
 
 }

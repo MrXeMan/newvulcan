@@ -47,5 +47,16 @@
         android:id="@+id/nav_lekcje"
         android:name="me.mrxeman.vulcan.activities.ui.lekcje.LekcjeFragment"
         android:label="Lekcje"
-        tools:layout="@layout/fragment_lekcje" />
+        tools:layout="@layout/fragment_lekcje">
+        <action
+            android:id="@+id/action_nav_lekcje_to_nav_lekcja"
+            app:destination="@id/nav_lekcja" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_lekcja"
+        android:name="me.mrxeman.vulcan.activities.ui.lekcje.subFragments.LekcjaFragment"
+        android:label="Lekcja"
+        tools:layout="@layout/fragment_lekcja" />
+
 </navigation>

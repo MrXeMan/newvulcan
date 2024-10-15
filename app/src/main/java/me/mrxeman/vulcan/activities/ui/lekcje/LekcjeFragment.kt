@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.lekcje.placeholder.Lessons
+import me.mrxeman.vulcan.activities.ui.lekcje.utils.Lessons
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

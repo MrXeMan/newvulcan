@@ -40,7 +40,7 @@ class MyOcenyRecyclerViewAdapter(
         val item = oceny[position]
         holder.ocena.text = item.grade
         holder.ocenaData.text = item.data?.let { Date(it) }
-            ?.let { SimpleDateFormat("dd.mm.yyyy").format(it) }
+            ?.let { SimpleDateFormat("dd.MM.yyyy").format(it) }
         holder.ocenaName.text = item.columnName
         holder.ocenaTyp.text = item.categoryName
         holder.ocenaWaga.text = "Waga: ${item.importance}"
