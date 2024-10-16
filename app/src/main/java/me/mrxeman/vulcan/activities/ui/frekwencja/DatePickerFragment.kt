@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
-import me.mrxeman.vulcan.activities.ui.frekwencja.placeholder.Obecnosc
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import me.mrxeman.vulcan.activities.ui.frekwencja.placeholder.Obecnosc
+import me.mrxeman.vulcan.activities.ui.frekwencja.utils.Obecnosc
 
 import me.mrxeman.vulcan.databinding.FragmentFrekwencjaBinding
 import me.mrxeman.vulcan.utils.Global
