@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_lekcje"
             app:destination="@id/nav_lekcje" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_sprawdziany"
+            app:destination="@id/nav_sprawdziany" />
     </fragment>
 
     <fragment
@@ -58,5 +61,11 @@
         android:name="me.mrxeman.vulcan.activities.ui.lekcje.subFragments.LekcjaFragment"
         android:label="Lekcja"
         tools:layout="@layout/fragment_lekcja" />
+
+    <fragment
+        android:id="@+id/nav_sprawdziany"
+        android:name="me.mrxeman.vulcan.activities.ui.sprawdziany.SprawdzianyFragment"
+        android:label="Sprawdziany"
+        tools:layout="@layout/fragment_sprawdziany_sub" />
 
 </navigation>

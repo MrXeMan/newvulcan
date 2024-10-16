@@ -1,4 +1,4 @@
-package me.mrxeman.vulcan.activities.ui.frekwencja.placeholder
+package me.mrxeman.vulcan.activities.ui.frekwencja.utils
 
 import com.google.gson.JsonParser
 import java.time.LocalDate

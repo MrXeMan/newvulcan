@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.frekwencja.placeholder.Obecnosc
+import me.mrxeman.vulcan.activities.ui.frekwencja.utils.Obecnosc
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
