@@ -25,5 +25,10 @@
             android:icon="@drawable/baseline_edit_document_24"
             android:title="@string/menu_sprawdziany" />
 
+        <item
+            android:id="@id/nav_domowe"
+            android:icon="@drawable/baseline_timelapse_24"
+            android:title="@string/menu_domowe" />
+
     </group>
 </menu>

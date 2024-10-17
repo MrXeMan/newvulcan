@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_sprawdziany"
             app:destination="@id/nav_sprawdziany" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_domowe"
+            app:destination="@id/nav_domowe" />
     </fragment>
 
     <fragment
@@ -67,5 +70,11 @@
         android:name="me.mrxeman.vulcan.activities.ui.sprawdziany.SprawdzianyFragment"
         android:label="Sprawdziany"
         tools:layout="@layout/fragment_sprawdziany_sub" />
+
+    <fragment
+        android:id="@+id/nav_domowe"
+        android:name="me.mrxeman.vulcan.activities.ui.domowe.ZadaniaDomoweFragment"
+        android:label="Zadania domowe"
+        tools:layout="@layout/fragment_domowe_sub" />
 
 </navigation>

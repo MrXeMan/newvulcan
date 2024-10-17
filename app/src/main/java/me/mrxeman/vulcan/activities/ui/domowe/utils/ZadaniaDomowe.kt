@@ -1,39 +1,37 @@
-package me.mrxeman.vulcan.activities.ui.sprawdziany.utils
+package me.mrxeman.vulcan.activities.ui.domowe.utils
 
-import com.google.gson.JsonArray
-import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import me.mrxeman.vulcan.utils.Extensions.asLocalDate
 import java.time.LocalDate
+import java.util.ArrayList
 import java.util.HashMap
 import java.util.SortedMap
-import kotlin.collections.ArrayList
 
-object Sprawdziany {
+object ZadaniaDomowe {
 
-    val ITEMS: MutableList<Sprawdzian> = ArrayList()
+
+    val ITEMS: MutableList<ZadanieDomowe> = ArrayList()
     val ITEMS_LIST: MutableList<Item> = ArrayList()
-    val ITEMS_MAP: SortedMap<LocalDate, ArrayList<Sprawdzian>> = sortedMapOf()
+    val ITEMS_MAP: SortedMap<LocalDate, ArrayList<ZadanieDomowe>> = sortedMapOf()
 
     fun load(temporary: String, temporary2: String) {
         val topLevel = JsonParser.parseString(temporary).asJsonArray
         topLevel.forEach {
-            val spr = it.asJsonObject
-            if (spr.get("typ").asInt == 4) {
+            val zd = it.asJsonObject
+            if (zd.get("typ").asInt != 4) {
                 return@forEach
             }
-            val id: Int = spr.get("id").asInt
+            val id: Int = zd.get("id").asInt
             val dod = JsonParser.parseString(temporary2).asJsonObject
-            var desc: String = ""
+            var desc = ""
             if (dod.get("id").asInt == id) {
                 desc = dod.get("opis").asString
             }
-            addItem(Sprawdzian(
+            addItem(ZadanieDomowe(
                 id,
-                spr.get("typ").asInt,
-                spr.get("przedmiotNazwa").asString,
-                spr.get("data").asLocalDate,
-                spr.get("hasAttachment").asBoolean,
+                zd.get("przedmiotNazwa").asString,
+                zd.get("data").asLocalDate,
+                zd.get("hasAttachment").asBoolean,
                 desc
             ))
         }
@@ -45,7 +43,7 @@ object Sprawdziany {
         }
     }
 
-    private fun addItem(item: Sprawdzian) {
+    private fun addItem(item: ZadanieDomowe) {
         ITEMS.add(item)
         if (ITEMS_MAP.containsKey(item.date)) {
             ITEMS_MAP[item.date]!!.add(item)
@@ -59,11 +57,12 @@ object Sprawdziany {
             1 -> "Sprawdzian"
             2 -> "Kartkowka"
             3 -> "Praca klasowa"
+            4 -> "Praca domowa"
             else -> null
         }
     }
 
-    data class Sprawdzian(val id: Int, val category: Int, val przedmiot: String, val date: LocalDate, val attach: Boolean, val description: String)
+    data class ZadanieDomowe(val id: Int, val przedmiot: String, val date: LocalDate, val attach: Boolean, val description: String)
 
     data class Item(val date: Boolean, val extra: Any)
 }
