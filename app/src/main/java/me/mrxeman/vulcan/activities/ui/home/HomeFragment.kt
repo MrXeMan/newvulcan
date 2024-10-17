@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import me.mrxeman.vulcan.activities.ui.domowe.utils.ZadaniaDomowe
 import me.mrxeman.vulcan.activities.ui.frekwencja.utils.Obecnosc
 import me.mrxeman.vulcan.activities.ui.lekcje.utils.Lessons
 import me.mrxeman.vulcan.activities.ui.oceny.utils.Oceny
@@ -66,6 +67,17 @@ class HomeFragment : Fragment() {
             """.trimIndent()
             Toast.makeText(MyApplication.getContext(), "Loaded tests!", Toast.LENGTH_SHORT).show()
             Sprawdziany.load(temporary, temporary2)
+        }
+
+        binding.loadHomeworkButton.setOnClickListener {
+            val temporary = """
+                [{"typ":2,"przedmiotNazwa":"Język niemiecki","data":"2024-10-02T00:00:00+02:00","hasAttachment":false,"id":18572},{"typ":3,"przedmiotNazwa":"Podstawy przedsiębiorczości","data":"2024-10-01T00:00:00+02:00","hasAttachment":false,"id":18487},{"typ":3,"przedmiotNazwa":"Podstawy przedsiębiorczości","data":"2024-10-02T00:00:00+02:00","hasAttachment":false,"id":18680},{"typ":2,"przedmiotNazwa":"Historia i teraźniejszość","data":"2024-10-02T00:00:00+02:00","hasAttachment":false,"id":18623},{"typ":2,"przedmiotNazwa":"Historia i teraźniejszość","data":"2024-10-23T00:00:00+02:00","hasAttachment":false,"id":18817},{"typ":1,"przedmiotNazwa":"Historia","data":"2024-10-30T00:00:00+01:00","hasAttachment":false,"id":18813},{"typ":1,"przedmiotNazwa":"Eksploatacja urządzeń peryferyjnych i sieciowych","data":"2024-10-04T00:00:00+02:00","hasAttachment":false,"id":18568},{"typ":1,"przedmiotNazwa":"Matematyka","data":"2024-10-09T00:00:00+02:00","hasAttachment":false,"id":18607},{"typ":2,"przedmiotNazwa":"Chemia","data":"2024-10-09T00:00:00+02:00","hasAttachment":false,"id":18692},{"typ":2,"przedmiotNazwa":"Biologia","data":"2024-10-10T00:00:00+02:00","hasAttachment":false,"id":18698},{"typ":2,"przedmiotNazwa":"Fizyka","data":"2024-10-10T00:00:00+02:00","hasAttachment":false,"id":18627},{"typ":2,"przedmiotNazwa":"Bezpieczeństwo i higiena pracy","data":"2024-10-08T00:00:00+02:00","hasAttachment":false,"id":18668},{"typ":4,"przedmiotNazwa":"Fizyka","data":"2024-10-03T00:00:00+02:00","hasAttachment":false,"id":9155},{"typ":4,"przedmiotNazwa":"Język angielski","data":"2024-10-08T00:00:00+02:00","hasAttachment":false,"id":9162}]
+            """.trimIndent()
+            val temporary2 = """
+                {"typ":1,"data":"2024-10-04T00:00:00+02:00","przedmiotNazwa":"Eksploatacja urządzeń peryferyjnych i sieciowych","nauczycielImieNazwisko":"Aleksander Pietnoczka","opis":"Konfiguracja routera - WAN, LAN, DHCP, Wi-Fi","sprawdzianModulDydaktyczny":false,"linki":[],"id":18568}
+            """.trimIndent()
+            Toast.makeText(MyApplication.getContext(), "Loaded Homework!", Toast.LENGTH_SHORT).show()
+            ZadaniaDomowe.load(temporary, temporary2)
         }
 
         val root: View = binding.root

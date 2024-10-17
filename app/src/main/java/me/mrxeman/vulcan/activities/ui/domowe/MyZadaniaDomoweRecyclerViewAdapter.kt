@@ -1,24 +1,23 @@
-package me.mrxeman.vulcan.activities.ui.sprawdziany
+package me.mrxeman.vulcan.activities.ui.domowe
 
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.sprawdziany.SprawdzianyFragment.Companion.selectedDate
-import me.mrxeman.vulcan.activities.ui.sprawdziany.utils.Sprawdziany
-import me.mrxeman.vulcan.utils.Global
-import java.lang.RuntimeException
-import java.time.LocalDate
-import java.util.SortedMap
+import me.mrxeman.vulcan.activities.ui.domowe.utils.ZadaniaDomowe
 
-class MySprawdzianyRecyclerViewAdapter(
-    private val hvalues: MutableList<Sprawdziany.Item>,
+import me.mrxeman.vulcan.utils.Global
+import java.time.LocalDate
+
+
+class MyZadaniaDomoweRecyclerViewAdapter(
+    private val hvalues: MutableList<ZadaniaDomowe.Item>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val DATE_VARIANT: Int = 0
-    private val TEST_VARIANT: Int = 1
+    private val HW_VARIANT: Int = 1
 
     internal class MainHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
@@ -33,25 +32,23 @@ class MySprawdzianyRecyclerViewAdapter(
 
     internal class SubHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
-        var category: TextView
         var lesson: TextView
         var subject: TextView
 
         init {
-            category = itemView!!.findViewById(R.id.categoryText)
-            lesson = itemView.findViewById(R.id.lessonText)
+            lesson = itemView!!.findViewById(R.id.lessonText)
             subject = itemView.findViewById(R.id.reqText)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        val item: Sprawdziany.Item = hvalues[position]
+        val item: ZadaniaDomowe.Item = hvalues[position]
         return when (item.date) {
             true -> {
                 DATE_VARIANT
             }
             false -> {
-                TEST_VARIANT
+                HW_VARIANT
             }
         }
     }
@@ -73,7 +70,7 @@ class MySprawdzianyRecyclerViewAdapter(
                 MainHolder(view)
             }
 
-            TEST_VARIANT -> {
+            HW_VARIANT -> {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.fragment_sprawdziany_sub, parent, false)
 
@@ -96,16 +93,14 @@ class MySprawdzianyRecyclerViewAdapter(
                 view.dayView.text = date.dayOfWeek.name
                 view.dateView.text = date.format(Global.dayFormat)
             }
-            TEST_VARIANT -> {
+            HW_VARIANT -> {
                 if (hvalues[position].date) throw Exception("Don't know how bruh.")
-                val spr: Sprawdziany.Sprawdzian = hvalues[position].extra as Sprawdziany.Sprawdzian
+                val spr: ZadaniaDomowe.ZadanieDomowe = hvalues[position].extra as ZadaniaDomowe.ZadanieDomowe
                 val view: SubHolder = holder as SubHolder
                 view.subject.text = spr.description
-                view.category.text = Sprawdziany.getType(spr.category)
                 view.lesson.text = spr.przedmiot
             }
         }
     }
-
 
 }
