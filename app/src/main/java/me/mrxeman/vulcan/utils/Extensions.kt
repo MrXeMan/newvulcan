@@ -5,6 +5,7 @@ import java.lang.Exception
 import java.lang.UnsupportedOperationException
 import java.time.LocalDate
 import java.time.LocalTime
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 object Extensions {
@@ -36,6 +37,11 @@ object Extensions {
     val JsonElement.asLocalTime: LocalTime
         get() {
             return LocalTime.parse(asString.split("T")[1].split("+")[0], DateTimeFormatter.ofPattern("HH:mm:ss"))
+        }
+
+    val JsonElement.asZonedDateTime: ZonedDateTime
+        get() {
+            return ZonedDateTime.parse(asString, DateTimeFormatter.ISO_DATE_TIME)
         }
 
     val JsonElement.asLocalDateOrNull: LocalDate?

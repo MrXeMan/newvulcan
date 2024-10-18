@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_domowe"
             app:destination="@id/nav_domowe" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_wiadomosci"
+            app:destination="@id/nav_wiadomosci" />
     </fragment>
 
     <fragment
@@ -76,5 +79,11 @@
         android:name="me.mrxeman.vulcan.activities.ui.domowe.ZadaniaDomoweFragment"
         android:label="Zadania domowe"
         tools:layout="@layout/fragment_domowe_sub" />
+
+    <fragment
+        android:id="@+id/nav_wiadomosci"
+        android:name="me.mrxeman.vulcan.activities.ui.wiadomosci.WiadomosciFragment"
+        android:label="Wiadomosci"
+        tools:layout="@layout/fragment_wiadomosci" />
 
 </navigation>

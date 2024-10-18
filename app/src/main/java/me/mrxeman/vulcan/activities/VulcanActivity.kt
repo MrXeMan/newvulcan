@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.ui.AppBarConfiguration
 import me.mrxeman.vulcan.R
 import me.mrxeman.vulcan.activities.ui.settings.SettingsActivity
 import me.mrxeman.vulcan.databinding.ActivityVulcanBinding
@@ -43,7 +42,7 @@ class VulcanActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_oceny, R.id.nav_frekwencja, R.id.nav_lekcje, R.id.nav_sprawdziany, R.id.nav_domowe
+                R.id.nav_home, R.id.nav_oceny, R.id.nav_frekwencja, R.id.nav_lekcje, R.id.nav_sprawdziany, R.id.nav_domowe, R.id.nav_wiadomosci
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
