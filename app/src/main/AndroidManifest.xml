@@ -17,6 +17,10 @@
         android:theme="@style/Theme.Vulcan"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ui.wiadomosci.WiadomosciActivity"
+            android:exported="false"
+            android:label="@string/title_activity_wiadomosci" />
+        <activity
             android:name=".activities.ui.settings.SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
