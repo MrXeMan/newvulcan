@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import me.mrxeman.vulcan.R
+import me.mrxeman.vulcan.activities.ui.wiadomosci.utils.ViewPagerAdapter
 
 class WiadomosciFragment : Fragment() {
 
@@ -33,7 +30,7 @@ class WiadomosciFragment : Fragment() {
 
         val tabLayout: TabLayout = view.findViewById(R.id.tabs)
         val pager: ViewPager2 = view.findViewById(R.id.pager)
-        pager.adapter = ViewPagerAdapter(parentFragmentManager, lifecycle)
+        pager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle)
         TabLayoutMediator(tabLayout, pager) { tab, position ->
             tab.text = array[position]
         }.attach()
