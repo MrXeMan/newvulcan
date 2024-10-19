@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.wiadomosci.MyWiadomoscRecyclerViewAdapter
+import me.mrxeman.vulcan.activities.ui.wiadomosci.utils.MyWiadomoscRecyclerViewAdapter
 import me.mrxeman.vulcan.activities.ui.wiadomosci.utils.Messages
 
 class WiadOdeFragment : Fragment() {

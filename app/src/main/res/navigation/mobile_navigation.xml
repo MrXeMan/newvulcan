@@ -84,6 +84,16 @@
         android:id="@+id/nav_wiadomosci"
         android:name="me.mrxeman.vulcan.activities.ui.wiadomosci.WiadomosciFragment"
         android:label="Wiadomosci"
-        tools:layout="@layout/fragment_wiadomosci" />
+        tools:layout="@layout/fragment_wiadomosci" >
+        <action
+            android:id="@+id/action_nav_wiadomosci_to_nav_wiadomosc"
+            app:destination="@id/nav_wiadomosc" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_wiadomosc"
+        android:name="me.mrxeman.vulcan.activities.ui.wiadomosci.wiadomosc.WiadomoscFragment"
+        android:label="Wiadomosc"
+        tools:layout="@layout/fragment_wiadomosc_extra" />
 
 </navigation>

@@ -3,6 +3,7 @@ package me.mrxeman.vulcan.utils
 import com.google.gson.JsonElement
 import java.lang.Exception
 import java.lang.UnsupportedOperationException
+import java.net.URL
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.ZonedDateTime
@@ -42,6 +43,11 @@ object Extensions {
     val JsonElement.asZonedDateTime: ZonedDateTime
         get() {
             return ZonedDateTime.parse(asString, DateTimeFormatter.ISO_DATE_TIME)
+        }
+
+    val JsonElement.asURL: URL
+        get() {
+            return URL(asString)
         }
 
     val JsonElement.asLocalDateOrNull: LocalDate?

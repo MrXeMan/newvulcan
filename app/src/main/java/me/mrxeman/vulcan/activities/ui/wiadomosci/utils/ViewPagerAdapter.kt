@@ -1,4 +1,4 @@
-package me.mrxeman.vulcan.activities.ui.wiadomosci
+package me.mrxeman.vulcan.activities.ui.wiadomosci.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
