@@ -34,6 +34,10 @@
             android:id="@+id/nav_wiadomosci"
             android:icon="@drawable/messages"
             android:title="@string/menu_wiadomosci" />
+        <item
+            android:id="@+id/nav_statystyki"
+            android:icon="@drawable/baseline_stacked_bar_chart_24"
+            android:title="@string/menu_statystyki" />
 
     </group>
 </menu>

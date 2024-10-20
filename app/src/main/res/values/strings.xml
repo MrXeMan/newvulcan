@@ -128,4 +128,5 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="menu_wiadomosci">Wiadomosci</string>
+    <string name="menu_statystyki">Statystyki</string>
 </resources>
