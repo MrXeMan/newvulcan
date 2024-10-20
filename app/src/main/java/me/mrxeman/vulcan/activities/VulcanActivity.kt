@@ -42,7 +42,7 @@ class VulcanActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_oceny, R.id.nav_frekwencja, R.id.nav_lekcje, R.id.nav_sprawdziany, R.id.nav_domowe, R.id.nav_wiadomosci
+                R.id.nav_home, R.id.nav_oceny, R.id.nav_frekwencja, R.id.nav_lekcje, R.id.nav_sprawdziany, R.id.nav_domowe, R.id.nav_wiadomosci, R.id.nav_statystyki
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

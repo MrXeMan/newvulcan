@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_wiadomosci"
             app:destination="@id/nav_wiadomosci" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_statystyki"
+            app:destination="@id/nav_statystyki" />
     </fragment>
 
     <fragment
@@ -95,5 +98,64 @@
         android:name="me.mrxeman.vulcan.activities.ui.wiadomosci.wiadomosc.WiadomoscFragment"
         android:label="Wiadomosc"
         tools:layout="@layout/fragment_wiadomosc_extra" />
+
+    <fragment
+        android:id="@+id/nav_statystyki"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.StatystykiFragment"
+        android:label="Statystyki"
+        tools:layout="@layout/fragment_statystyki">
+        <action
+            android:id="@+id/action_nav_statystyki_to_statFrekwencjaFragment"
+            app:destination="@id/nav_stat_frekwencja" />
+        <action
+            android:id="@+id/action_nav_statystyki_to_statOcenyFragment"
+            app:destination="@id/nav_stat_oceny" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_stat_frekwencja"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.StatFrekwencjaFragment"
+        android:label="fragment_stat_frekwencja"
+        tools:layout="@layout/fragment_stat_frekwencja" >
+        <action
+            android:id="@+id/action_nav_stat_frekwencja_to_statFrekwencjaSredniaFrekwencjaFragment"
+            app:destination="@id/statFrekwencjaSredniaFrekwencjaFragment" />
+        <action
+            android:id="@+id/action_nav_stat_frekwencja_to_statFrekwencjaSredniaPrzedmiotowaFragment"
+            app:destination="@id/statFrekwencjaSredniaPrzedmiotowaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_stat_oceny"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.StatOcenyFragment"
+        android:label="fragment_stat_oceny"
+        tools:layout="@layout/fragment_stat_oceny" >
+        <action
+            android:id="@+id/action_nav_stat_oceny_to_statOcenyLicznikFragment"
+            app:destination="@id/statOcenyLicznikFragment" />
+        <action
+            android:id="@+id/action_nav_stat_oceny_to_statOcenySredniaFragment"
+            app:destination="@id/statOcenySredniaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statFrekwencjaSredniaFrekwencjaFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniaf.StatFrekwencjaSredniaFrekwencjaFragment"
+        android:label="fragment_stat_frekwencja_srednia_frekwencja"
+        tools:layout="@layout/fragment_stat_frekwencja_srednia_frekwencja" />
+    <fragment
+        android:id="@+id/statFrekwencjaSredniaPrzedmiotowaFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniap.StatFrekwencjaSredniaPrzedmiotowaFragment"
+        android:label="fragment_stat_frekwencja_srednia_przedmiotowa"
+        tools:layout="@layout/fragment_stat_frekwencja_srednia_przedmiotowa" />
+    <fragment
+        android:id="@+id/statOcenyLicznikFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.srednia.StatOcenyLicznikFragment"
+        android:label="fragment_stat_oceny_licznik"
+        tools:layout="@layout/fragment_stat_oceny_licznik" />
+    <fragment
+        android:id="@+id/statOcenySredniaFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.StatOcenySredniaFragment"
+        android:label="fragment_stat_oceny_srednia"
+        tools:layout="@layout/fragment_stat_oceny_srednia" />
 
 </navigation>
