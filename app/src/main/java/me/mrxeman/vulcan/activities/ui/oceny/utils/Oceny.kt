@@ -1,6 +1,8 @@
 package me.mrxeman.vulcan.activities.ui.oceny.utils
 
 import com.google.gson.JsonParser
+import me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.licznik.Licznik
+import me.mrxeman.vulcan.activities.ui.statystyki.oceny.srednia.srednia.Srednia
 import me.mrxeman.vulcan.utils.Global
 import java.text.SimpleDateFormat
 import java.util.Collections
@@ -48,6 +50,8 @@ object Oceny {
                 oceny)
             addPrzedmiot(p)
         }
+        Srednia.load()
+        Licznik.load()
     }
 
     private fun addPrzedmiot(przedmiot: Przedmiot) {

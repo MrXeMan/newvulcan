@@ -9,8 +9,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.StatOcenySredniaFragment
-import me.mrxeman.vulcan.activities.ui.statystyki.oceny.srednia.StatOcenyLicznikFragment
+import me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.StatOcenyLicznikFragment
+import me.mrxeman.vulcan.activities.ui.statystyki.oceny.srednia.StatOcenySredniaFragment
 
 class StatOcenyFragment : Fragment() {
 

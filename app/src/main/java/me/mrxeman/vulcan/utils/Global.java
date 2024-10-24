@@ -15,8 +15,12 @@ import org.jetbrains.annotations.NotNull;
 import java.net.CookieManager;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.concurrent.Callable;
@@ -119,6 +123,12 @@ public class Global {
                     running = false;
                 }
         ).start();
+    }
+
+    public static LocalDate convertToLocalDateViaMilisecond(@NonNull Date dateToConvert) {
+        return Instant.ofEpochMilli(dateToConvert.getTime())
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 
     public static SharedPreferences getDefaultPreferences() {
