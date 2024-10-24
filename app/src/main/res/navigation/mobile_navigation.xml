@@ -149,12 +149,13 @@
         tools:layout="@layout/fragment_stat_frekwencja_srednia_przedmiotowa" />
     <fragment
         android:id="@+id/statOcenyLicznikFragment"
-        android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.srednia.StatOcenyLicznikFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.StatOcenyLicznikFragment"
         android:label="fragment_stat_oceny_licznik"
-        tools:layout="@layout/fragment_stat_oceny_licznik" />
+        tools:layout="@layout/fragment_stat_oceny_licznik" >
+    </fragment>
     <fragment
         android:id="@+id/statOcenySredniaFragment"
-        android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.StatOcenySredniaFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.srednia.StatOcenySredniaFragment"
         android:label="fragment_stat_oceny_srednia"
         tools:layout="@layout/fragment_stat_oceny_srednia" />
 
