@@ -38,10 +38,14 @@ class MyStatOcenySredniaRecyclerViewAdapter(
         } else {
             holder.srednia.text = String.format("%.2f", item.srednia)
         }
-        if (position == 0) {
+        if (item.name == "Wszystko") {
             holder.name.setTypeface(null, Typeface.BOLD)
             holder.name.textAlignment = View.TEXT_ALIGNMENT_CENTER
             holder.srednia.setTypeface(null, Typeface.BOLD)
+        } else {
+            holder.name.setTypeface(null, Typeface.NORMAL)
+            holder.name.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+            holder.srednia.setTypeface(null, Typeface.NORMAL)
         }
     }
 

@@ -1,13 +1,14 @@
 package me.mrxeman.vulcan.utils
 
 import com.google.gson.JsonElement
-import java.lang.Exception
 import java.lang.UnsupportedOperationException
 import java.net.URL
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.Exception
 
 object Extensions {
 
@@ -63,6 +64,20 @@ object Extensions {
         get() {
             return try {
                 asLocalTime
+            } catch (_: Exception) {
+                null
+            }
+        }
+
+    val JsonElement.asLocalDateTime: LocalDateTime
+        get() {
+            return LocalDateTime.parse(asString)
+        }
+
+    val JsonElement.asLocalDateTimeOrNull: LocalDateTime?
+        get() {
+            return try {
+                LocalDateTime.parse(asString)
             } catch (_: Exception) {
                 null
             }

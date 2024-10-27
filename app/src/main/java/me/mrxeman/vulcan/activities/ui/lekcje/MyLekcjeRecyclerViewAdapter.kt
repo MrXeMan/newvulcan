@@ -17,10 +17,6 @@ import me.mrxeman.vulcan.databinding.FragmentLekcjeBinding
 
 import me.mrxeman.vulcan.utils.MyApplication
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyLekcjeRecyclerViewAdapter(
     private val values: MutableList<Lessons.Lekcja>?,
 ) : RecyclerView.Adapter<MyLekcjeRecyclerViewAdapter.ViewHolder>() {

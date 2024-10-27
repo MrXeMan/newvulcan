@@ -1,21 +1,19 @@
-package me.mrxeman.vulcan.activities.ui.oceny.subFragments
+package me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.przedmioty
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.oceny.utils.Oceny
+import me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.przedmioty.obecnosci.Frekwencja
 
-class OcenyFragment : Fragment() {
+class StatFrekwencjaPrzedmiotFragment : Fragment() {
 
     private var columnCount = 1
-    private lateinit var adapter1: MyOcenyRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +23,8 @@ class OcenyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_ocena_list, container, false)
+        val view =
+            inflater.inflate(R.layout.fragment_stat_frekwencja_przedmiot_list, container, false)
 
         // Set the adapter
         if (view is RecyclerView) {
@@ -34,16 +33,9 @@ class OcenyFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                this.adapter = MyOcenyRecyclerViewAdapter(Oceny.selectedPrzedmiot!!.oceny)
-                adapter1 = this.adapter as MyOcenyRecyclerViewAdapter
+                adapter = MyStatFrekwencjaPrzedmiotRecyclerViewAdapter(Frekwencja.ITEMS)
             }
         }
         return view
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    override fun onResume() {
-        super.onResume()
-        adapter1.notifyDataSetChanged()
     }
 }

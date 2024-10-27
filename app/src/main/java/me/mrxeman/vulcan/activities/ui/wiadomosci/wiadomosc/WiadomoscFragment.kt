@@ -61,8 +61,8 @@ class WiadomoscFragment : Fragment() {
             date.text = selectedMessage!!.date.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"))
             sender.text = selectedMessage!!.sender.name
             receiver.text = selectedMessage!!.receiver
-            subject.text = selectedMessage!!.extra.invoke().first
-            files = selectedMessage!!.extra.invoke().second
+            subject.text = selectedMessage!!.getMessage()
+            files = selectedMessage!!.extra.second
         }
 
         with(recyclerView) {

@@ -1,6 +1,7 @@
 package me.mrxeman.vulcan.activities.ui.lekcje.utils
 
 import com.google.gson.JsonArray
+import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import me.mrxeman.vulcan.utils.Extensions.asIntOrNull
 import me.mrxeman.vulcan.utils.Extensions.asLocalDate
@@ -17,15 +18,18 @@ object Lessons {
     val ITEMS: MutableList<Lekcje> = mutableListOf()
     val ITEMS_MAP: MutableMap<LocalDate, Lekcje> = mutableMapOf()
 
+    private val newITEMS: MutableList<Lekcje> = mutableListOf()
+    private val newITEMS_MAP: MutableMap<LocalDate, Lekcje> = mutableMapOf()
+
     private var failedLekcja: Lekcja? = null
 
-    fun load(temporary: String) {
-        val topLevel = JsonParser.parseString(temporary).asJsonArray
+    fun load(lessonsJSON: JsonElement) {
+        val topLevel = lessonsJSON.asJsonArray
         topLevel.forEachIndexed { i, it ->
             val godzina = it.asJsonObject
             val day = LocalDate.parse(godzina.get("data").asString.split("T")[0], DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-            val lekcje: MutableList<Lekcja> = if (ITEMS_MAP.containsKey(day)) {
-                ITEMS_MAP[day]!!.lekcje
+            val lekcje: MutableList<Lekcja> = if (newITEMS_MAP.containsKey(day)) {
+                newITEMS_MAP[day]!!.lekcje
             } else {
                 mutableListOf()
             }
@@ -76,19 +80,24 @@ object Lessons {
 
             lekcje.add(lekcja)
 
-            if (!ITEMS_MAP.containsKey(day)) {
+            if (!newITEMS_MAP.containsKey(day)) {
                 addItem(Lekcje(day, lekcje))
             }
         }
-        println("Loaded!")
-        println(ITEMS_MAP)
+        ITEMS.clear()
+        ITEMS.addAll(newITEMS)
+        newITEMS.clear()
+
+        ITEMS_MAP.clear()
+        ITEMS_MAP.putAll(newITEMS_MAP)
+        newITEMS_MAP.clear()
     }
 
 
 
     private fun addItem(item: Lekcje) {
-        ITEMS.add(item)
-        ITEMS_MAP[item.day] = item
+        newITEMS.add(item)
+        newITEMS_MAP[item.day] = item
     }
 
 

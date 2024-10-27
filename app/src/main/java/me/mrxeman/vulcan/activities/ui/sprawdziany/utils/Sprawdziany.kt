@@ -4,10 +4,12 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import me.mrxeman.vulcan.utils.Extensions.asLocalDate
+import me.mrxeman.vulcan.utils.Global
 import java.time.LocalDate
 import java.util.HashMap
 import java.util.SortedMap
 import kotlin.collections.ArrayList
+import kotlin.concurrent.thread
 
 object Sprawdziany {
 
@@ -15,15 +17,15 @@ object Sprawdziany {
     val ITEMS_LIST: MutableList<Item> = ArrayList()
     val ITEMS_MAP: SortedMap<LocalDate, ArrayList<Sprawdzian>> = sortedMapOf()
 
-    fun load(temporary: String, temporary2: String) {
-        val topLevel = JsonParser.parseString(temporary).asJsonArray
+    fun load(testsJSON: JsonElement) = thread {
+        val topLevel = testsJSON.asJsonArray
         topLevel.forEach {
             val spr = it.asJsonObject
             if (spr.get("typ").asInt == 4) {
                 return@forEach
             }
             val id: Int = spr.get("id").asInt
-            val dod = JsonParser.parseString(temporary2).asJsonObject
+            val dod = Global.user.api.SprawdzianRequest(id).asJsonObject
             var desc: String = ""
             if (dod.get("id").asInt == id) {
                 desc = dod.get("opis").asString

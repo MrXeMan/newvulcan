@@ -13,6 +13,9 @@ object Licznik {
     val ITEM_MAP: MutableMap<String, Licznik> = HashMap()
     val SUB_ITEM_MAP: MutableMap<String, Oceny> = HashMap()
 
+    private val newITEMS: MutableList<Licznik> = ArrayList()
+    private val newSUBITEMS: MutableList<Oceny> = ArrayList()
+
 
     fun load() {
         val map: MutableMap<String, Int> = mutableMapOf()
@@ -36,20 +39,26 @@ object Licznik {
                 )
             )
         }
-        val temporary = ITEMS.sortedWith(compareBy { it })
+        val temporary = newITEMS.sortedWith(compareBy { it })
+        newITEMS.clear()
+        newITEMS.addAll(temporary)
+
         ITEMS.clear()
-        ITEMS.addAll(temporary)
+        ITEMS.addAll(newITEMS)
+        newITEMS.clear()
+
+        SUB_ITEMS.clear()
+        SUB_ITEMS.addAll(newSUBITEMS)
+        newSUBITEMS.clear()
     }
 
 
     private fun addItem(item: Licznik) {
-        ITEMS.add(item)
-        ITEM_MAP[item.grade] = item
+        newITEMS.add(item)
     }
 
     private fun addSubItem(item: Oceny) {
-        SUB_ITEMS.add(item)
-        SUB_ITEM_MAP[item.name] = item
+        newSUBITEMS.add(item)
     }
 
 

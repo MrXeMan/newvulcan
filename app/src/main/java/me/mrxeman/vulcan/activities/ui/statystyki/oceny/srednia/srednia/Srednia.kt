@@ -7,12 +7,9 @@ import java.util.HashMap
 object Srednia {
 
     val ITEMS: MutableList<Przedmiot> = ArrayList()
-
-    val ITEM_MAP: MutableMap<String, Przedmiot> = HashMap()
+    private val newITEMS: MutableList<Przedmiot> = ArrayList()
 
     fun load() {
-        ITEMS.clear()
-        ITEM_MAP.clear()
         val temporary: MutableList<Oceny.Ocena> = mutableListOf()
         Oceny.przedmioty.forEach {
             var suma = 0.0F
@@ -28,18 +25,20 @@ object Srednia {
         }
         var srednia = 0.0F
         var licznik = 0
-        ITEMS.forEach {
+        newITEMS.forEach {
             if (!it.srednia.isNaN()) {
                 srednia += it.srednia
                 licznik += 1
             }
         }
-        ITEMS.add(0, Przedmiot("Wszystko", temporary, srednia/licznik))
+        newITEMS.add(0, Przedmiot("Wszystko", temporary, srednia/licznik))
+        ITEMS.clear()
+        ITEMS.addAll(newITEMS)
+        newITEMS.clear()
     }
 
     private fun addItem(item: Przedmiot) {
-        ITEMS.add(item)
-        ITEM_MAP[item.name] = item
+        newITEMS.add(item)
     }
 
     private fun convert(grade: String): Float? {

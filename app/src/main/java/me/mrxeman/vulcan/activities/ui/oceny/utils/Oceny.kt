@@ -1,5 +1,6 @@
 package me.mrxeman.vulcan.activities.ui.oceny.utils
 
+import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.licznik.Licznik
 import me.mrxeman.vulcan.activities.ui.statystyki.oceny.srednia.srednia.Srednia
@@ -12,19 +13,18 @@ import java.util.HashMap
 object Oceny {
 
     var przedmioty: MutableList<Przedmiot> = mutableListOf()
-
     var selectedPrzedmiot: Przedmiot? = null
 
-    val przedmiotyMap: MutableMap<String, Przedmiot> = mutableMapOf()
+    private val newPrzedmioty: MutableList<Przedmiot> = mutableListOf()
 
-    fun load(temporary: String) {
-        val topLevel = JsonParser.parseString(temporary).asJsonObject.get("ocenyPrzedmioty").asJsonArray
+    fun load(ocenyJSON: ArrayList<JsonElement>) {
+        println(ocenyJSON)
+        val topLevel = ocenyJSON[0].asJsonObject.get("ocenyPrzedmioty").asJsonArray
         topLevel.forEach {
             val przed = it.asJsonObject
             val oceny: MutableList<Ocena> = mutableListOf()
             przed.get("ocenyCzastkowe").asJsonArray.forEach {itt ->
                 val oc = itt.asJsonObject
-                println("Data: ${oc.get("dataOceny").asString} - ${SimpleDateFormat("dd.MM.yyyy").parse(oc.get("dataOceny").asString)}")
                 val o = Ocena(oceny.size,
                     oc.get("wpis").asString,
                     SimpleDateFormat("dd.MM.yyyy").parse(oc.get("dataOceny").asString)!!.time,
@@ -50,13 +50,16 @@ object Oceny {
                 oceny)
             addPrzedmiot(p)
         }
+        przedmioty.clear()
+        przedmioty.addAll(newPrzedmioty)
+        newPrzedmioty.clear()
+
         Srednia.load()
         Licznik.load()
     }
 
     private fun addPrzedmiot(przedmiot: Przedmiot) {
-        przedmioty.add(przedmiot)
-        przedmiotyMap[przedmiot.name] = przedmiot
+        newPrzedmioty.add(przedmiot)
     }
 
     data class Przedmiot(val name: String, val teacher: String?, val oceny: MutableList<Ocena>) {

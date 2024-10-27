@@ -28,7 +28,6 @@ class FrekwencjaFragment : Fragment() {
     var datePicker: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        selectedDate = LocalDate.now()
         super.onCreate(savedInstanceState)
     }
 
