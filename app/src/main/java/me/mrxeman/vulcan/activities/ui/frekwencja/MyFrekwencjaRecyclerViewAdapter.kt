@@ -11,10 +11,6 @@ import me.mrxeman.vulcan.activities.ui.frekwencja.utils.Obecnosc
 import me.mrxeman.vulcan.databinding.FragmentFrekwencjaBinding
 import me.mrxeman.vulcan.utils.Global
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyFrekwencjaRecyclerViewAdapter(
     private val values: MutableList<Obecnosc.Frekwencja>?,
 ) : RecyclerView.Adapter<MyFrekwencjaRecyclerViewAdapter.ViewHolder>() {

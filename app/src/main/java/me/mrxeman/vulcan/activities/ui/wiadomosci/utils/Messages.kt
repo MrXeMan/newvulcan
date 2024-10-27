@@ -1,20 +1,41 @@
 package me.mrxeman.vulcan.activities.ui.wiadomosci.utils
 
+import android.text.Html
+import android.text.Spanned
+import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import me.mrxeman.vulcan.utils.Extensions.asURL
 import me.mrxeman.vulcan.utils.Extensions.asZonedDateTime
+import me.mrxeman.vulcan.utils.Global
 import java.net.URL
 import java.time.ZonedDateTime
+import kotlin.concurrent.thread
 
 object Messages {
 
     val R_MESSAGES: MutableList<message> = ArrayList()
     val S_MESSAGES: MutableList<message> = ArrayList()
 
-    fun loadReceived(temporary: String, share: String) {
-        val topLevel = JsonParser.parseString(temporary).asJsonArray
+    fun loadReceived(messagesJSON: JsonElement) = thread {
+        val topLevel = messagesJSON.asJsonArray
         topLevel.forEach {
             val m = it.asJsonObject
+            val json =  Global.user.api.DetailMessageRequest(m.get("apiGlobalKey").asString).asJsonObject
+            val extra = {
+                val subject: String = json.get("tresc").asString
+                val z = json.get("zalaczniki").asJsonArray
+                val files: ArrayList<Attachment> = arrayListOf()
+                z.forEach { it2 ->
+                    val zl = it2.asJsonObject
+                    files.add(
+                        Attachment(
+                            zl.get("nazwaPliku").asString,
+                            zl.get("url").asURL
+                        )
+                    )
+                }
+                subject to files
+            }
             R_MESSAGES.add(
                 message(
                     m.get("id").asInt,
@@ -31,35 +52,33 @@ object Messages {
                     m.get("wazna").asBoolean,
                     m.get("wycofana").asBoolean,
                     m.get("odpowiedziana").asBoolean,
-                    m.get("przekazana").asBoolean
-                ) {
-                    val json = JsonParser.parseString(share).asJsonObject
-                    if (json.get("id").asInt == m.get("id").asInt) {
-                        val subject: String = json.get("tresc").asString
-                        val z = json.get("zalaczniki").asJsonArray
-                        val files: ArrayList<Attachment> = arrayListOf()
-                        z.forEach { it2 ->
-                            val zl = it2.asJsonObject
-                            files.add(
-                                Attachment(
-                                    zl.get("nazwaPliku").asString,
-                                    zl.get("url").asURL
-                                )
-                            )
-                        }
-                        return@message subject to files
-                    } else {
-                        return@message "" to arrayListOf()
-                    }
-                }
+                    m.get("przekazana").asBoolean,
+                    extra.invoke()
+                )
             )
         }
     }
 
-    fun loadSent(temporary: String, share: String) {
-        val topLevel = JsonParser.parseString(temporary).asJsonArray
+    fun loadSent(messagesJSON: JsonElement) = thread {
+        val topLevel = messagesJSON.asJsonArray
         topLevel.forEach {
             val m = it.asJsonObject
+            val json =  Global.user.api.DetailMessageRequest(m.get("apiGlobalKey").asString).asJsonObject
+            val extra = {
+                val subject: String = json.get("tresc").asString
+                val z = json.get("zalaczniki").asJsonArray
+                val files: ArrayList<Attachment> = arrayListOf()
+                z.forEach { it2 ->
+                    val zl = it2.asJsonObject
+                    files.add(
+                        Attachment(
+                            zl.get("nazwaPliku").asString,
+                            zl.get("url").asURL
+                        )
+                    )
+                }
+                subject to files
+            }
             S_MESSAGES.add(
                 message(
                     m.get("id").asInt,
@@ -76,27 +95,9 @@ object Messages {
                     m.get("wazna").asBoolean,
                     m.get("wycofana").asBoolean,
                     m.get("odpowiedziana").asBoolean,
-                    m.get("przekazana").asBoolean
-                ) {
-                    val json = JsonParser.parseString(share).asJsonObject
-                    if (json.get("id").asInt == m.get("id").asInt) {
-                        val subject: String = json.get("tresc").asString
-                        val z = json.get("zalaczniki").asJsonArray
-                        val files: ArrayList<Attachment> = arrayListOf()
-                        z.forEach { it2 ->
-                            val zl = it2.asJsonObject
-                            files.add(
-                                Attachment(
-                                    zl.get("nazwaPliku").asString,
-                                    zl.get("url").asURL
-                                )
-                            )
-                        }
-                        return@message subject to files
-                    } else {
-                        return@message "" to arrayListOf()
-                    }
-                }
+                    m.get("przekazana").asBoolean,
+                    extra.invoke()
+                )
             )
         }
     }
@@ -104,7 +105,13 @@ object Messages {
 
     data class message(val id: Int, val date: ZonedDateTime, val sender: Sender, val topic: String, val receiver: String, val hasAttachments: Boolean,
                        val read: Boolean, val important: Boolean, val reverted: Boolean, val responded: Boolean, val forwarded: Boolean,
-                       val extra: () -> Pair<String, ArrayList<Attachment>>)
+                       val extra: Pair<String, ArrayList<Attachment>>)  {
+
+        fun getMessage(): Spanned {
+            return Html.fromHtml(extra.first, Html.FROM_HTML_MODE_COMPACT)
+        }
+
+    }
 
     data class Sender(val key: String, val name: String, val role: Int)
 

@@ -16,7 +16,20 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.Vulcan.PopupOverlay" />
+            app:popupTheme="@style/Theme.Vulcan.PopupOverlay">
+
+            <ImageButton
+                android:id="@+id/reloadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:adjustViewBounds="true"
+                android:background="#00FFFFFF"
+                android:cropToPadding="true"
+                android:scaleType="fitStart"
+                android:layout_gravity="right"
+                app:srcCompat="@drawable/sync" />
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -30,6 +43,6 @@
 <!--        android:layout_marginEnd="@dimen/fab_margin"-->
 <!--        android:layout_marginBottom="16dp"-->
 <!--        app:srcCompat="@android:drawable/ic_dialog_email"-->
-<!--        android:contentDescription="TODO" />-->
+<!--        android:contentDescription="" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

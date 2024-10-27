@@ -1,5 +1,6 @@
 package me.mrxeman.vulcan.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -15,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import me.mrxeman.vulcan.R
 import me.mrxeman.vulcan.activities.ui.settings.SettingsActivity
 import me.mrxeman.vulcan.databinding.ActivityVulcanBinding
+import me.mrxeman.vulcan.utils.Global
 import me.mrxeman.vulcan.utils.MyApplication
 
 class VulcanActivity : AppCompatActivity() {
@@ -29,6 +31,10 @@ class VulcanActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarVulcan.toolbar)
+
+        binding.appBarVulcan.reloadButton.setOnClickListener {
+            Global.reloadRequest = true
+        }
 
 //        binding.appBarVulcan.fab.setOnClickListener { view ->
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -46,6 +52,7 @@ class VulcanActivity : AppCompatActivity() {
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.isSaveEnabled = true
         navView.setupWithNavController(navController)
     }
 
@@ -65,5 +72,11 @@ class VulcanActivity : AppCompatActivity() {
             startActivity(Intent(MyApplication.getContext(), SettingsActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+
     }
 }

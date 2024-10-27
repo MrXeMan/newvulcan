@@ -48,6 +48,9 @@ public class Global {
     public static final DateTimeFormatter hourFormat = DateTimeFormatter.ofPattern("HH:mm");
     public static final DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
+    public static final int reloadCooldown = 300_000;
+    public static boolean reloadRequest = false;
+
     static {
        try {
            vulcan = new URL("https://eduvulcan.pl");

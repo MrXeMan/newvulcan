@@ -16,9 +16,6 @@ import me.mrxeman.vulcan.utils.Global
 import org.w3c.dom.Text
 import java.time.format.DateTimeFormatter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
 class LekcjaFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

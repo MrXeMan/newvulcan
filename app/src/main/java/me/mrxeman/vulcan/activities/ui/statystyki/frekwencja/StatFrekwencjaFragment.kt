@@ -9,8 +9,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniaf.StatFrekwencjaSredniaFrekwencjaFragment
-import me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniap.StatFrekwencjaSredniaPrzedmiotowaFragment
+import me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.przedmioty.StatFrekwencjaPrzedmiotFragment
+import me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.srednia.StatFrekwencjaSredniaFragment
 
 class StatFrekwencjaFragment : Fragment() {
 
@@ -36,12 +36,12 @@ class StatFrekwencjaFragment : Fragment() {
 
     companion object {
         val array: Array<String> = arrayOf(
-            "Srednia frekwencja",
-            "Srednia przedmiotowa"
+            "Srednia",
+            "Przedmioty"
         )
         val map: Map<String, Fragment> = mapOf(
-            "Srednia frekwencja" to StatFrekwencjaSredniaFrekwencjaFragment(),
-            "Srednia przedmiotowa" to StatFrekwencjaSredniaPrzedmiotowaFragment()
+            "Srednia" to StatFrekwencjaSredniaFragment(),
+            "Przedmioty" to StatFrekwencjaPrzedmiotFragment()
         )
     }
 }

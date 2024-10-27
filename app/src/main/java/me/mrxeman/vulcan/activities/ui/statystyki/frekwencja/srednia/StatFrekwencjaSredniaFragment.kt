@@ -1,4 +1,4 @@
-package me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniaf
+package me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.srednia
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,18 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.mrxeman.vulcan.R
-import me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniaf.placeholder.PlaceholderContent
+import me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.srednia.srednia.Srednia
 
-class StatFrekwencjaSredniaFrekwencjaFragment : Fragment() {
+class StatFrekwencjaSredniaFragment : Fragment() {
 
     private var columnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
     }
 
     override fun onCreateView(
@@ -28,7 +24,7 @@ class StatFrekwencjaSredniaFrekwencjaFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(
-            R.layout.fragment_stat_frekwencja_srednia_frekwencja_list,
+            R.layout.fragment_stat_frekwencja_srednia_list,
             container,
             false
         )
@@ -41,24 +37,9 @@ class StatFrekwencjaSredniaFrekwencjaFragment : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
                 adapter =
-                    MyStatFrekwencjaSredniaFrekwencjaRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                    MyStatFrekwencjaSredniaRecyclerViewAdapter(Srednia.ITEMS)
             }
         }
         return view
-    }
-
-    companion object {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            StatFrekwencjaSredniaFrekwencjaFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
     }
 }

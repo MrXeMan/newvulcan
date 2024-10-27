@@ -110,6 +110,12 @@
         <action
             android:id="@+id/action_nav_statystyki_to_statOcenyFragment"
             app:destination="@id/nav_stat_oceny" />
+        <action
+            android:id="@+id/action_nav_statystyki_to_nav_frekwencja"
+            app:destination="@id/nav_frekwencja"
+            app:popUpTo="@+id/nav_statystyki"
+            app:popUpToInclusive="true"
+            app:popUpToSaveState="true"/>
     </fragment>
 
     <fragment
@@ -122,7 +128,7 @@
             app:destination="@id/statFrekwencjaSredniaFrekwencjaFragment" />
         <action
             android:id="@+id/action_nav_stat_frekwencja_to_statFrekwencjaSredniaPrzedmiotowaFragment"
-            app:destination="@id/statFrekwencjaSredniaPrzedmiotowaFragment" />
+            app:destination="@id/statFrekwencjaPrzedmiotFragment" />
     </fragment>
 
     <fragment
@@ -139,14 +145,15 @@
     </fragment>
     <fragment
         android:id="@+id/statFrekwencjaSredniaFrekwencjaFragment"
-        android:name="me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniaf.StatFrekwencjaSredniaFrekwencjaFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.srednia.StatFrekwencjaSredniaFragment"
         android:label="fragment_stat_frekwencja_srednia_frekwencja"
-        tools:layout="@layout/fragment_stat_frekwencja_srednia_frekwencja" />
+        tools:layout="@layout/fragment_stat_frekwencja_srednia" />
     <fragment
-        android:id="@+id/statFrekwencjaSredniaPrzedmiotowaFragment"
-        android:name="me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.sredniap.StatFrekwencjaSredniaPrzedmiotowaFragment"
-        android:label="fragment_stat_frekwencja_srednia_przedmiotowa"
-        tools:layout="@layout/fragment_stat_frekwencja_srednia_przedmiotowa" />
+        android:id="@+id/statFrekwencjaPrzedmiotFragment"
+        android:name="me.mrxeman.vulcan.activities.ui.statystyki.frekwencja.przedmioty.StatFrekwencjaPrzedmiotFragment"
+        android:label="fragment_stat_frekwencja_przedmiot"
+        tools:layout="@layout/fragment_stat_frekwencja_przedmiot" >
+    </fragment>
     <fragment
         android:id="@+id/statOcenyLicznikFragment"
         android:name="me.mrxeman.vulcan.activities.ui.statystyki.oceny.licznik.StatOcenyLicznikFragment"
